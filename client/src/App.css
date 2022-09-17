@@ -1,0 +1,36 @@
+:root {
+  --dark-green: #083F34;
+  --green: #689957;
+}
+
+.App {
+  background: var(--dark-green);
+  min-height: 100vh;
+  display: flex;
+}
+
+.Sidebar {
+  width: 10vw;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 4rem;
+}
+
+.Sidebar h1 {
+  font-weight: normal;
+  width: 100%;
+  text-align: center;
+  color: var(--green);
+}
+
+.FindBike {
+  width: 100%;
+  background: white;
+  color: black;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  padding: 2rem;
+}
