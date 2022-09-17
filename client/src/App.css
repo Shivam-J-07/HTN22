@@ -1,6 +1,16 @@
 :root {
   --dark-green: #083F34;
-  --green: #689957;
+  --green: rgb(104, 153, 87);
+  --black: rgb(50,50,50);
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
 }
 
 .App {
@@ -16,7 +26,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 4rem;
+  padding: 2rem;
 }
 
 .Sidebar h1 {
@@ -26,11 +36,178 @@
   color: var(--green);
 }
 
-.FindBike {
+.Sidebar a, .Sidebar a:visited {
+  color: white;
+  text-decoration: none;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+}
+
+.Sidebar a:hover {
+  color: var(--green);
+}
+
+.Sidebar .active {
+  background: rgba(104, 153, 87, 0.2);
   width: 100%;
+  border-radius: 20px;
+}
+
+.FindBike, .RentBike, .Messages {
+  width: 30vw;
+  max-height: 100vh;
   background: white;
   color: black;
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
   padding: 2rem;
+  overflow: hidden;
+}
+
+.FindBike h1, .RentBike h1, .Messages h1 {
+  font-weight: normal;
+}
+
+.FindBike h2, .RentBike h2 {
+  font-weight: normal;
+}
+
+.FindBike h5, .RentBike h5 {
+  font-weight: normal;
+  margin: 0;
+}
+
+.Filters {
+  display: flex;
+  flex-direction: column;
+}
+
+.Filters input, .RentBike input {
+  background-color: rgba(104, 153, 87, 0.25);
+  border: none;
+  border-radius: 10px;
+  padding: 0.25rem;
+  margin: 0.1rem 0;
+}
+
+.ResultPreview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(104, 153, 87, 0.25);
+  margin: 1rem 0;
+  padding: 0.25rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 100ms;
+}
+
+.ResultPreview:hover {
+  background-color: rgba(104, 153, 87, 0.1);
+}
+
+.ResultPreview h1 {
+  font-weight: normal;
+  font-size: medium;
+}
+
+.ResultPreview .downArrow {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.Result {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid rgba(104, 153, 87, 0.25);
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.bike-image {
+  width: 8rem;
+  height: 8rem;
+  object-fit: contain;
+}
+
+.Result h1, .RentBikeResult h1 {
+  font-size: large;
+  font-weight: bold;
+}
+
+.result-info {
+  width: 100%;
+  margin: 0 1rem;
+}
+
+.result-info-limit {
+  margin-right: 1rem;
+}
+
+.Directions {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: rgba(104, 153, 87, 0.25);
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.Directions h1 {
+  font-size: medium;
+}
+
+.Directions {
+  font-size: small;
+}
+
+.estimatedMinutes {
+  width: 100%;
+  text-align: right;
+  font-weight: bold;
+  color: var(--green);
+}
+
+.directions-from-to {
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.directions-steps {
+  background: rgba(255, 255, 255, 0.75);
+  padding: 1rem 2rem;
+  border-radius: 10px;
+}
+
+.btn {
+  border-radius: 10px;
+  border: 1px solid;
+  padding: 0.25rem 0.5rem;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  background: var(--black);
+  color: white;
+  transition: all 100ms;
+}
+
+.btn:hover {
+  background: white;
+  color: var(--black);
+}
+
+.RentBikeResult {
+  border: 1px solid rgba(104, 153, 87, 0.25);
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.RentBikeResult p {
+  margin: 0.25rem 0;
+}
+
+.result-info-status {
+  background: rgba(104, 153, 87, 0.25);
 }
