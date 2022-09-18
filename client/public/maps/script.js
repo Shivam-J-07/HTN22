@@ -14,6 +14,7 @@ var distancesToBike = [];
 var userMarker;
 
 function initMap() {
+  console.log(google, google.maps);
   const map = new google.maps.Map(document.getElementById("map"), {
     center: userPosition,
     zoom: 15,
@@ -82,7 +83,7 @@ function initMap() {
         }
       });
     });
-    (err) => alert(`Error (${err.code}): ${getPositionErrorMessage(err.code)}`);
+    // (err) => alert(`Error (${err.code}): ${getPositionErrorMessage(err.code)}`);
   } else {
     alert("Geolocation is not supported by your browser.");
   }
