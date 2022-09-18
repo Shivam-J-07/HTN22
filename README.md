@@ -9,7 +9,6 @@ This motivated our team to build ReCycle, an app which connects interested bike 
 ReCycle is an app which connects interested bike owners to riders who want to rent a bike. Bike owners can list their bike for rent for a desired time limit and hourly rate whereas riders can view the listings near them to find the bike that best suits their needs.   
 Our app is a win-win for both owners and riders, allowing owners to generate over $750 a month and providing riders with access to more convenient, readily accessible transportation.  
 
-
 ## How we built it
 For the front-end component of the website, we created our web-app pages in React and used HTML5 with CSS3 to style the site. We used the Google Maps API to generate a map with markers, directions, and other functionality. 
 We built the backend using the Flask framework. 
@@ -25,8 +24,19 @@ We're proud of learning about new technologies from Hack the North's sponsors su
 ## What's next for ReCycle
 We plan to expand our app to support mobile platforms as well. We hope to support our users further by giving information about bike trails and allowing in-app transactions.
 
-![Image 1](https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/226/362/datas/original.jpeg)
+![Hardware Setup](https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/226/362/datas/original.jpeg)
+![Find a Bike](https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/226/390/datas/gallery.jpg)
 
+## How you can build it!
+Prereqs: npm, flask, cockroachdb access, socket.io
+1. navigate to the client folder for the frontend set up
+    <pre><code>npm install
+    </code></pre>
+    <pre><code>npm run start
+    </code></pre>
+
+2. hardware: Arduino Uno, breadboard, LED, resistors, active buzzer
 ## Links
 [Devpost](https://devpost.com/software/recycle-9eu6j0)
+
 [Inspiration](https://www.independent.co.uk/climate-change/news/carbon-emissions-dutch-cycling-b2147770.html)
