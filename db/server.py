@@ -53,6 +53,24 @@ def db_bikebyid (id):
     result = cursor.fetchone()
     return result
 
+def db_filterbikes (rate, time, model):
+    filter_sql = ''
+    filter_list = ['SELECT * FROM bikes WHERE 1=1 ']
+    if (rate) :
+        filter_list.append('rate_h <= ' + rate)
+    if (time): 
+        filter_list.append('time_limit >= ' + time)
+    if (model):
+        filter_list.append('bike_model = ' + model)
+    filter_sql+=" AND ".join(filter_list)
+    print(filter_sql)
+    cursor.execute(
+        filter_sql
+    )
+    result = cursor.fetchall()
+    return result
+
+
 # user routes
 
 @app.route("/register", methods=['POST'])
@@ -100,6 +118,21 @@ def get_bikebyid():
         return jsonify(res)
     except Exception as e:
         return jsonify({"error": str(e)})
+
+@app.route("/search", methods=['GET'])
+def filter_bikes():
+    rate = None
+    time = None
+    model = None
+    if(request.args.get('rate_h')):
+        rate = request.args['rate_h'] 
+    if(request.args.get('time_limit')):
+        time = request.args['time_limit']
+    if(request.args.get('bike_model')):
+        model = request.args['bike_model']
+    
+    result = db_filterbikes(rate, time, model)
+    return jsonify(result)
 
 # tutorial stuff:
 
