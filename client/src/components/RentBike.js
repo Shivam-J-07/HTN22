@@ -6,26 +6,7 @@ import Maps from './MapAPI'
 
 function RentBike(props) {
   const [image, setImage] = useState("");
-  const [yourBikes, setYourBikes] = useState([
-    {
-      id: 1,
-      location: "123 Main St, Toronto, ON",
-      model: "City Cruiser",
-      hourLimit: "2",
-      hourlyRate: "10",
-      image:
-        "https://media.karousell.com/media/photos/products/2020/12/8/giant_stance_2_29er_blue_ashes_1607432788_51d0978a_progressive.jpg",
-    },
-    {
-      id: 3,
-      location: "123 Main St, Toronto, ON",
-      model: "City Cruiser",
-      hourLimit: 2,
-      hourlyRate: 10,
-      image:
-        "https://media.karousell.com/media/photos/products/2020/12/8/giant_stance_2_29er_blue_ashes_1607432788_51d0978a_progressive.jpg",
-    },
-  ]);
+  const [yourBikes, setYourBikes] = useState([]);
   const [chosenBikeId, setChosenBikeId] = useState(yourBikes[0].id);
 
   return (
@@ -51,7 +32,7 @@ function RentBike(props) {
               return (
                 <ResultPreview
                   key={bike.id}
-                  location={bike.location}
+                  location={bike.address}
                   onClick={() => setChosenBikeId(bike.id)}
                 />
               );
