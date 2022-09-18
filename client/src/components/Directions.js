@@ -1,10 +1,10 @@
-function Directions({path}) {
+function Directions(props) {
     const {
         to,
         from,
         directions,
         estimatedMinutes
-    } = path;
+    } = props;
     return (
       <div className="Directions">
         <h1>Directions</h1>
