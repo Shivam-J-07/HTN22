@@ -3,7 +3,7 @@ function Sidebar({items}) {
     const current = useLocation().pathname;
     return (
         <div className="Sidebar">
-            <h1>RideMe</h1>
+            <h1>ReCycle</h1>
             {items.map(item => (
                 <Link key={item.path} to={item.path} className={`${item.path === current ? 'active' : ''}`}>{item.label}</Link>
             ))}

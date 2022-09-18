@@ -15,7 +15,7 @@ function Result({ bike }) {
             <strong>${bike.hourlyRate}</strong>
           </div>
         </div>
-        <button className="btn">RideMe!</button>
+        <button className="btn">ReCycle!</button>
       </div>
     </div>
   );
