@@ -5,15 +5,30 @@ import psycopg2
 import psycopg2.extras
 from dotenv import load_dotenv
 from datetime import datetime
+from flask_socketio import SocketIO, leave_room, join_room, send, emit
 
 load_dotenv()
 
 # Create a Flask server.
 app = Flask(__name__)
+socketio = SocketIO(app)
 
 connection = psycopg2.connect(dsn=os.environ["DATABASE_URL"], application_name="$ docs_quickstart_python")
 connection.set_session(autocommit=True)
 cursor = connection.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+
+# socketio methods
+@socketio.on("connect")
+def connect():
+    print("Connected!")
+
+@socketio.on("changeRoom")
+def changeRoom(data):
+    join_room(data["name"])
+
+@socketio.on("sendMessage")
+def sendMessage(data):
+    emit("receiveMessage", {"message": data["message"], "user": data["user"]}, to=data["room"])
 
 # database methods
 
