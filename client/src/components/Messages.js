@@ -8,7 +8,7 @@ class Messages extends React.Component {
             recipient: "arnavgupta",
             messages: [
                 {
-                    "recipient": "arnavgupta",
+                    "recipient": "padenaaaa",
                     "messages": [
                         {
                             "author": "arnavgupta",
@@ -53,9 +53,18 @@ class Messages extends React.Component {
             console.log(this.state.messageBoxMessages[this.state.messageBoxMessages.length - 1])
             let curMessages = this.state.messageBoxMessages
             curMessages.push({author: data.user, message: data.message})
-            this.setState(curMessages)
+            curMessages = curMessages.filter((value, index, self) => {
+                return index === self.findIndex((t) => (
+                    t.author === value.author, t.message === value.message
+                ))
+            })
+            this.setState({messageBoxMessages: curMessages})
         })  
-        if (this.state.messageBoxMessages[this.state.messageBoxMessages.length - 1] === this.state.messageBoxMessages[this.state.messageBoxMessages.length - 2]) {this.state.messageBoxMessages.pop()} 
+        if (this.state.messageBoxMessages[this.state.messageBoxMessages.length - 1] === this.state.messageBoxMessages[this.state.messageBoxMessages.length - 2]) {
+            let newMessages = this.state.messageBoxMessages
+            newMessages.pop()
+            this.setState({messageBoxMessages: newMessages})
+        } 
     }
     render() {
         return (
@@ -65,7 +74,7 @@ class Messages extends React.Component {
                     {this.state.messages.map((messageSet) => <li><button type='button' onClick={() => this.setMessageBox(messageSet.messages)}>{messageSet.recipient}</button></li>)}
                 </ul>
                 <ul id="messagebox">
-                    {this.state.messageBoxMessages.map((messageSet) => <li><b>{messageSet.author}:</b> {messageSet.message}</li>)}
+                    {Array.from(new Set(this.state.messageBoxMessages)).map((messageSet) => <li><b>{messageSet.author}:</b> {messageSet.message}</li>)}
                     <input value={this.state.messageVal} onChange={evt => this.updateInputValue(evt)} type={"text"} /> <button type='button' onClick={() => this.sendMessageVal(this.state.messageVal)}>Send Message</button>
                 </ul>
             </div>
