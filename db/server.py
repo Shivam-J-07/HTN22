@@ -40,7 +40,20 @@ def db_userinfo (id):
     result = cursor.fetchone()
     return result
 
-# routes
+def db_postbike (address, picture, rate_h, time_limit, bike_model, owner) :
+    cursor.execute(
+        "INSERT INTO bikes (address, picture, rate_h, time_limit, bike_model, owner) VALUES (%s, %s, %s, %s, %s, %s) RETURNING id",
+        (address, picture, rate_h, time_limit, bike_model, owner))
+    result = cursor.fetchall()
+    return result
+
+def db_bikebyid (id):
+    cursor.execute(
+        "SELECT * FROM bikes WHERE id = '" + id + "'")
+    result = cursor.fetchone()
+    return result
+
+# user routes
 
 @app.route("/register", methods=['POST'])
 def register():
@@ -67,10 +80,28 @@ def get_user_by_id():
     except Exception as e:
         return jsonify({"error": str(e)})
 
+# bike routes
 
+@app.route("/bike", methods=['POST'])
+def post_bike():
+    try:
+        r = json.loads(request.data)
+        print(r)
+        res = db_postbike(r['address'], r['picture'], r['rate_h'], r['time_limit'], r['bike_model'], r['owner'])
+        return jsonify(res)
+
+    except Exception as e:
+        return jsonify({"error": str(e)})
+
+@app.route("/bike", methods=['GET'])
+def get_bikebyid():
+    try:
+        res = db_bikebyid(request.args['id'])
+        return jsonify(res)
+    except Exception as e:
+        return jsonify({"error": str(e)})
 
 # tutorial stuff:
-
 
 '''
 def db_get_all():
@@ -91,9 +122,6 @@ def db_filter_listings(min_year, group):
         (group, min_year))
     result = cursor.fetchall()
     return result
-
-
-
 
 
 def db_update_title(id, new_title):

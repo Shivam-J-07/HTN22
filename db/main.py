@@ -29,7 +29,7 @@ def main():
         # CREATE rooms table
         "CREATE TABLE IF NOT EXISTS rooms (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), messages STRING[], room_users UUID[])",
         # CREATE bikes table
-        "CREATE TABLE IF NOT EXISTS bikes (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), latitude FLOAT, longitude FLOAT, picture BYTES, rate_h FLOAT, time_limit FLOAT, bike_model STRING, owner UUID)",
+        "CREATE TABLE IF NOT EXISTS bikes (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), address STRING, picture STRING, rate_h FLOAT, time_limit FLOAT, bike_model STRING, owner UUID)",
         # CREATE ticket table
         "CREATE TABLE IF NOT EXISTS tickets (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), bike UUID, user_list UUID[], received TIMESTAMPTZ, returned TIMESTAMPTZ)"
     ]
