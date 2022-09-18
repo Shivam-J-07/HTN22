@@ -60,14 +60,21 @@ class Messages extends React.Component {
     render() {
         return (
             <div className="Messages">
-                <h1>Messages</h1>
-                <ul>
-                    {this.state.messages.map((messageSet) => <li><button type='button' onClick={() => this.setMessageBox(messageSet.messages)}>{messageSet.recipient}</button></li>)}
-                </ul>
-                <ul id="messagebox">
-                    {this.state.messageBoxMessages.map((messageSet) => <li><b>{messageSet.author}:</b> {messageSet.message}</li>)}
-                    <input value={this.state.messageVal} onChange={evt => this.updateInputValue(evt)} type={"text"} /> <button type='button' onClick={() => this.sendMessageVal(this.state.messageVal)}>Send Message</button>
-                </ul>
+                <div className='left-bar'>
+                    <h1>Messages</h1>
+                    <ul className='recipients-list'>
+                        {this.state.messages.map((messageSet) => <li><div className='recipient' onClick={() => this.setMessageBox(messageSet.messages)}>{messageSet.recipient}</div></li>)}
+                    </ul>
+                </div>
+                <div className='right-bar'>
+                    <h3>Your Conversation History</h3>
+                    <ul id="messagebox">
+                        {this.state.messageBoxMessages.map((messageSet) => <li className='message-text'><b>{messageSet.author}:</b> {messageSet.message}</li>)}
+                        <div className='message-type'>
+                        <input value={this.state.messageVal} onChange={evt => this.updateInputValue(evt)} type={"text"} /> <button type='button' className='btn' onClick={() => this.sendMessageVal(this.state.messageVal)}>Send Message</button>
+                        </div>
+                    </ul>
+                </div>
             </div>
         ); 
     }
