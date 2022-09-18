@@ -1,9 +1,7 @@
 var socket = io.connect("http://127.0.0.1:5000");
 
 function onLoad() {
-    socket.onconnect(() => {
-        socket.emit("connect");
-    });
+    socket.onconnect(() => socket.emit("connect"));
 
     sessionStorage.setItem("user", "arnav");
 }

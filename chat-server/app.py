@@ -16,6 +16,7 @@ def connect():
 
 @socketio.on("sendMessage")
 def sendMessage(data):
+    print("received" + data["message"])
     emit("receiveMessage", {"message": data["message"], "user": data["user"]}, to="theroom")
 
 # @socketio.on("changeRoom")

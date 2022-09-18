@@ -5,12 +5,14 @@ import psycopg2
 import psycopg2.extras
 from dotenv import load_dotenv
 from flask_socketio import SocketIO, leave_room, join_room, send, emit
+from flask_cors import CORS
 
 load_dotenv()
 
 # Create a Flask server.
 app = Flask(__name__)
-socketio = SocketIO(app)
+socketio = SocketIO(app, cors_allowed_origins="*")
+CORS(app)
 
 connection = psycopg2.connect(dsn=os.environ["DATABASE_URL"], application_name="$ docs_quickstart_python")
 connection.set_session(autocommit=True)
@@ -19,6 +21,7 @@ cursor = connection.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
 # socketio methods
 @socketio.on("connect")
 def connect():
+    join_room("theroom")
     print("Connected!")
 
 @socketio.on("changeRoom")
@@ -27,7 +30,8 @@ def changeRoom(data):
 
 @socketio.on("sendMessage")
 def sendMessage(data):
-    emit("receiveMessage", {"message": data["message"], "user": data["user"]}, to=data["room"])
+    print(data)
+    emit("receiveMessage", {"message": data['message'], "user": data['user']}, to=data['room'])
 
 # database methods
 
@@ -240,4 +244,4 @@ def delete_book(id):
 '''
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    socketio.run(app, debug = True)
