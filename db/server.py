@@ -4,6 +4,7 @@ import os
 import psycopg2
 import psycopg2.extras
 from dotenv import load_dotenv
+from datetime import datetime
 
 load_dotenv()
 
@@ -70,6 +71,36 @@ def db_filterbikes (rate, time, model):
     result = cursor.fetchall()
     return result
 
+def db_ticketbooked (bike, owner, renter):
+    cursor.execute(
+        "INSERT INTO tickets (bike, owner, renter, status) VALUES (%s, %s, %s, %s) RETURNING id",
+        (bike, owner, renter, "booked"))
+    result = cursor.fetchall()
+    return result
+
+def db_ticketreceived (id):
+    time = datetime.now(tz=None).strftime("%Y/%m/%d %H:%M:%S")
+    cursor.execute(
+        "UPDATE tickets SET status = 'received', received = '" + time + 
+        "' WHERE id = '" + id + "' RETURNING status"
+        )
+    result = cursor.fetchall()
+    return result
+
+def db_ticketreturned(id) :
+    time = datetime.now(tz=None).strftime("%Y/%m/%d %H:%M:%S")
+    cursor.execute(
+        "UPDATE tickets SET status = 'returned', returned = '" + time + 
+        "' WHERE id = '" + id + "' RETURNING status"
+        )
+    result = cursor.fetchall()
+    return result
+
+def db_ticketbyid(id) :
+    cursor.execute(
+        "SELECT * FROM tickets WHERE id = '" + id + "'")
+    result = cursor.fetchone()
+    return result
 
 # user routes
 
@@ -133,6 +164,40 @@ def filter_bikes():
     
     result = db_filterbikes(rate, time, model)
     return jsonify(result)
+
+#ticket routes
+
+@app.route("/ticket/book", methods=['POST'])
+def book_bike():
+    try:
+        res = db_ticketbooked(request.args['bike'], request.args['owner'], request.args['renter'])
+        return jsonify(res)
+    except Exception as e:
+        return jsonify({"error": str(e)})
+
+@app.route("/ticket/receive", methods=['POST'])
+def receive_bike():
+    try: 
+        res = db_ticketreceived(request.args['id'])
+        return jsonify(res)
+    except Exception as e:
+        return jsonify({"error": str(e)})
+
+@app.route("/ticket/return", methods=['POST'])
+def return_bike():
+    try: 
+        res = db_ticketreturned(request.args['id'])
+        return jsonify(res)
+    except Exception as e:
+        return jsonify({"error": str(e)})
+
+@app.route("/ticket", methods=['GET'])
+def get_bike():
+    try: 
+        res = db_ticketbyid(request.args['id'])
+        return jsonify(res)
+    except Exception as e:
+        return jsonify({"error": str(e)})
 
 # tutorial stuff:
 
