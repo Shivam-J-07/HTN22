@@ -20,10 +20,10 @@ const navItems = [
     "path": "/messages",
     "label": "Messages",
   },
-  {
-    "path": "/bike-trails",
-    "label": "Bike Trails",
-  },
+  // {
+  //   "path": "/bike-trails",
+  //   "label": "Bike Trails",
+  // },
 ];
 
 function App() {

@@ -12,11 +12,35 @@ function FindBike() {
   const [currentLocation, setCurrentLocation] = useState('');
   const [chosenBikeId, setChosenBikeId] = useState(1);
   const [estimatedMinutes, setEstimatedMinutes] = useState(0);
+  const [model, setModel] = useState("")
+  const [location, setLocation] = useState("")
+  const [timeLimit, setTimeLimit] = useState(0)
+  const [rentalRate, setRentalRate] =  useState(0)
 
   useEffect(() => {
     // call api to populate nearby bikes
-    setBikes([]);
+    fetch("http://localhost:5000/search").then(response => response.json()).then(data => setBikes(data))
+    // setBikes([]);
   }, []);
+
+  const onSearch = () => {
+    let fetchUrl = "http://localhost:5000/search"
+    let params = []
+    if (model.length !== 0) {
+      params.push("bike_model=" + model)
+    }
+    if (timeLimit !== 0) {
+      params.push(("time_limit=" + (timeLimit.toString())))
+    }
+    if (rentalRate !== 0) {
+      params.push("rate_h=" + rentalRate.toString())
+    }
+    if (params.length > 0) {
+      fetchUrl += "?"
+      fetchUrl += params.join("&")
+    }
+    fetch(fetchUrl).then(response => response.json()).then(data => setBikes(data))
+  }
 
   return (
     <div>
@@ -31,8 +55,8 @@ function FindBike() {
           There are <strong>{bikes.length}</strong> bicycles in your area!
         </h2>
         <h5>Filters</h5>
-        <Filters />
-        <button className="btn">Search</button>
+        <Filters model={model} setModel={setModel} location={location} setLocation={setLocation} timeLimit={timeLimit} setTimeLimit={setTimeLimit} rentalRate={rentalRate} setRentalRate={setRentalRate} />
+        <button className="btn" type="button" onClick={onSearch}>Search</button>
         {bikes.map((bike) => {
           if (bike.id === chosenBikeId) {
             return <Result key={bike.id} bike={bike} />;

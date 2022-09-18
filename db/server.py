@@ -97,6 +97,13 @@ def db_ticketbooked (bike, owner, renter):
     result = cursor.fetchall()
     return result
 
+def db_deletebike (address):
+    cursor.execute(
+        "DELETE FROM bikes WHERE address='https://off.road.cc/sites/default/files/styles/970wide/public/thumbnails/image/Giant_TranceX_gallery08.jpeg?itok=1us0I1LD'"
+    )
+    result = cursor.fetchone()
+    return result
+
 def db_ticketreceived (id):
     time = datetime.now(tz=None).strftime("%Y/%m/%d %H:%M:%S")
     cursor.execute(
@@ -214,6 +221,14 @@ def return_bike():
 def get_bike():
     try: 
         res = db_ticketbyid(request.args['id'])
+        return jsonify(res)
+    except Exception as e:
+        return jsonify({"error": str(e)})
+
+@app.route("/delete_bike")
+def delete_bike():
+    try:
+        res = db_deletebike("")
         return jsonify(res)
     except Exception as e:
         return jsonify({"error": str(e)})

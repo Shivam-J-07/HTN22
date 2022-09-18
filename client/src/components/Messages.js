@@ -12,11 +12,11 @@ class Messages extends React.Component {
                     "messages": [
                         {
                             "author": "arnavgupta",
-                            "message": "ur mom is cool"
+                            "message": "how about 4pm on tuesday?"
                         },
                         {
                             "author": "padenaaaa",
-                            "message": "thx"
+                            "message": "works for me!"
                         },
                     ]
                 }
@@ -34,7 +34,7 @@ class Messages extends React.Component {
     }
 
     sendMessageVal(message) {
-        this.socket.emit("sendMessage", {"message": message, "room": "theroom", "user": "arnav"})
+        this.socket.emit("sendMessage", {"message": message, "room": "theroom", "user": "arnavgupta"})
         this.setState({messageVal: ""})
     }
 

@@ -1,22 +1,26 @@
 import React, { useState } from 'react';
-import { Link, redirect } from 'react-router-dom';
+import { Link, redirect, useNavigate } from 'react-router-dom';
 import logo from '../images/ridemelogo.png'
 
 function Login(props) {
 
     const [email, setEmail] = useState('');
     const [pw, setPw] = useState('');
+    const navigate = useNavigate();
 
     async function authenticate(e) {
         e.preventDefault();
         console.debug(email, pw);
         try {
-            const data = await fetch(`/login?email=${email}&password=${pw}`);
+            const data = await fetch(`http://localhost:5000/login?email=${email}&password=${pw}`);
+            // console.log(data)
+            // console.log(data.json())
             const auth = await data.json();
             console.debug(auth);
-            if (auth.response === 200) {
+            if (data.status === 200) {
                 console.debug("Logged in successfully");
-                <redirect to="/" />
+                localStorage.setItem("userId", auth.id);
+                navigate("/")
             } else {
                 console.debug("Did not log in successfully");
             }
