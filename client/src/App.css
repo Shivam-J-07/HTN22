@@ -55,7 +55,7 @@
 
 .FindBike, .RentBike, .Messages {
   width: 30vw;
-  max-height: 100vh;
+  height: 100%;
   background: white;
   color: black;
   border-bottom-left-radius: 20px;
@@ -160,6 +160,7 @@
 
 .Directions {
   font-size: small;
+  z-index: 1;
 }
 
 .estimatedMinutes {
@@ -210,4 +211,14 @@
 
 .result-info-status {
   background: rgba(104, 153, 87, 0.25);
+}
+
+.map-container {
+  position: relative;
+  width: 50vw;
+  height: 100vh;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 0;
 }

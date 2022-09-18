@@ -5,6 +5,7 @@ function Layout({navItems, children}) {
       <div className="App">
         <Sidebar items={navItems} />
         {children}
+        
       </div>
     );
 }
