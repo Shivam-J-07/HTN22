@@ -227,3 +227,38 @@
   top: 0;
   z-index: 0;
 }
+
+.Login, .Register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.auth-form input {
+  padding: 0.5rem 0.25rem;
+  border-radius: 20px;
+  border: 1px solid silver;
+  width: 15rem;
+  margin: 0.5rem 0;
+}
+
+.auth-form .btn {
+  width: 5rem;
+  align-self: center;
+}
+
+.Login .logo, .Register .logo {
+  width: 10rem;
+}
+
+.logo-name {
+  position: absolute;
+  left: 2rem;
+  top: 0;
+  font-size: 2rem;
+  font-weight: normal;
+  color: var(--green);
+}
