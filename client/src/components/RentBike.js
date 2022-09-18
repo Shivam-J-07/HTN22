@@ -44,7 +44,7 @@ function RentBike(props) {
             placeholder="Image URL"
           />
         </div>
-        <button type="button" onClick={addBike}>Add Bike</button>
+        <button type="button" onClick={addBike} className='btn'>Add Bike</button>
         <div className="flex-col">
           <h1>All Your Bikes</h1>
           {yourBikes.map((bike) => {
