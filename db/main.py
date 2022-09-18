@@ -31,7 +31,7 @@ def main():
         # CREATE bikes table
         "CREATE TABLE IF NOT EXISTS bikes (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), address STRING, picture STRING, rate_h FLOAT, time_limit FLOAT, bike_model STRING, owner UUID)",
         # CREATE ticket table
-        "CREATE TABLE IF NOT EXISTS tickets (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), bike UUID, user_list UUID[], received TIMESTAMPTZ, returned TIMESTAMPTZ)"
+        "CREATE TABLE IF NOT EXISTS tickets (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), bike UUID, owner UUID, renter UUID, status STRING, received TIMESTAMP, returned TIMESTAMP)"
     ]
 
     for statement in statements:

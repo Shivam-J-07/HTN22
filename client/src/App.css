@@ -147,15 +147,17 @@
 
 .Directions {
   position: absolute;
-  top: 2rem;
-  right: 2rem;
-  background: rgba(104, 153, 87, 0.25);
+  top: 4rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.75);
   padding: 1rem;
   border-radius: 10px;
 }
 
 .Directions h1 {
   font-size: medium;
+  color: black;
+  font-weight: bold;
 }
 
 .Directions {
@@ -168,10 +170,13 @@
   text-align: right;
   font-weight: bold;
   color: var(--green);
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 10px;
+  padding: 0.5rem 0.1rem;
 }
 
 .directions-from-to {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(104, 153, 87, 0.4);
   padding: 1rem;
   border-radius: 10px;
 }
@@ -221,4 +226,39 @@
   right: 0;
   top: 0;
   z-index: 0;
+}
+
+.Login, .Register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.auth-form input {
+  padding: 0.5rem 0.25rem;
+  border-radius: 20px;
+  border: 1px solid silver;
+  width: 15rem;
+  margin: 0.5rem 0;
+}
+
+.auth-form .btn {
+  width: 5rem;
+  align-self: center;
+}
+
+.Login .logo, .Register .logo {
+  width: 10rem;
+}
+
+.logo-name {
+  position: absolute;
+  left: 2rem;
+  top: 0;
+  font-size: 2rem;
+  font-weight: normal;
+  color: var(--green);
 }

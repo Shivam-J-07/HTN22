@@ -1,10 +1,10 @@
-function Directions({path}) {
+function Directions(props) {
     const {
         to,
         from,
         directions,
         estimatedMinutes
-    } = path;
+    } = props;
     return (
       <div className="Directions">
         <h1>Directions</h1>
@@ -13,11 +13,11 @@ function Directions({path}) {
             <span>To: <strong>{to}</strong></span>
         </div>
         <p className="estimatedMinutes">{estimatedMinutes} min</p>
-        <ol className="directions-steps">
+        {/* <ol className="directions-steps">
             {directions.map(line => (
                 <li>{line}</li>
             ))}
-        </ol>
+        </ol> */}
       </div>
     );
 }
