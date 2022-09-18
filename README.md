@@ -25,6 +25,8 @@ We're proud of learning about new technologies from Hack the North's sponsors su
 ## What's next for ReCycle
 We plan to expand our app to support mobile platforms as well. We hope to support our users further by giving information about bike trails and allowing in-app transactions.
 
+![Image 1](https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/226/362/datas/original.jpeg)
+
 ## Links
 [Devpost](https://devpost.com/software/recycle-9eu6j0)
 [Inspiration](https://www.independent.co.uk/climate-change/news/carbon-emissions-dutch-cycling-b2147770.html)
