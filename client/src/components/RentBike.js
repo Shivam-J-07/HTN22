@@ -7,14 +7,35 @@ import Maps from './MapAPI'
 function RentBike(props) {
   const [image, setImage] = useState("");
   const [yourBikes, setYourBikes] = useState([]);
-  const [chosenBikeId, setChosenBikeId] = useState(yourBikes[0].id);
+  const [chosenBikeId, setChosenBikeId] = useState(0);
+  const [model, setModel] = useState("")
+  const [location, setLocation] = useState("")
+  const [timeLimit, setTimeLimit] = useState(0)
+  const [rentalRate, setRentalRate] =  useState(0)
+
+  const addBike = () => {
+    fetch("http://localhost:5000/bike", {method: 'POST', mode: 'cors', body: JSON.stringify({
+      address: location,
+      picture: image,
+      rate_h: rentalRate,
+      time_limit: timeLimit,
+      bike_model: model,
+      owner: localStorage.getItem("userId")
+    })}).then(() => {
+      setModel("")
+      setLocation("")
+      setTimeLimit(0)
+      setRentalRate(0)
+      setImage("")
+    })
+  }
 
   return (
     <div>
       <div className="RentBike">
         <h1>Rent Your Bike</h1>
         <p>Input your details below:</p>
-        <Filters />
+        <Filters model={model} setModel={setModel} location={location} setLocation={setLocation} timeLimit={timeLimit} setTimeLimit={setTimeLimit} rentalRate={rentalRate} setRentalRate={setRentalRate} />
         <div>
           <p>Upload a photo of your bike!</p>
           <input
@@ -23,6 +44,7 @@ function RentBike(props) {
             placeholder="Image URL"
           />
         </div>
+        <button type="button" onClick={addBike}>Add Bike</button>
         <div className="flex-col">
           <h1>All Your Bikes</h1>
           {yourBikes.map((bike) => {
