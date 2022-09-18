@@ -13,11 +13,11 @@ function Directions({path}) {
             <span>To: <strong>{to}</strong></span>
         </div>
         <p className="estimatedMinutes">{estimatedMinutes} min</p>
-        <ol className="directions-steps">
+        {/* <ol className="directions-steps">
             {directions.map(line => (
                 <li>{line}</li>
             ))}
-        </ol>
+        </ol> */}
       </div>
     );
 }

@@ -4,6 +4,7 @@ import Result from "./Result";
 import ResultPreview from "./ResultPreview";
 import Directions from "./Directions";
 import Maps from './MapAPI';
+import { addressToLngLat, findDistance } from '../utils';
 
 function FindBike() {
 
@@ -19,6 +20,15 @@ function FindBike() {
       "Arrive!",
     ],
   });
+  // const [e7, setE7] = useState('');
+  // useEffect(() => {
+  //   async function getAdd() {
+  //     const add = await addressToLngLat('200 University Ave W, Waterloo, ON N2L 3G5');
+  //     setE7(add);
+  //   }
+  //   getAdd();
+  // }, []);
+  // console.debug('e7', e7);
 
   useEffect(() => {
     // call api to populate nearby bikes
