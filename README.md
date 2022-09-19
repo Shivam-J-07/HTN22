@@ -1,4 +1,4 @@
-# HTN22
+# ReCycle - Hack The North 2022
 ## Inspiration
 We were inspired by the following Independent [article](https://www.independent.co.uk/climate-change/news/carbon-emissions-dutch-cycling-b2147770.html) which described the environmental benefits of biking, particularly the reduction in carbon emissions by up to **85%**. However, as students, we face many hurdles with using sustainable transportation. There are several roadblocks associated with biking, especially the cost of purchasing and maintaining a bike.  
 
