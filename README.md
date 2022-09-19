@@ -15,15 +15,6 @@ We built the backend using the Flask framework.
 The backend was built using the Flask framework. We used a cockroachdb database to store and access user-specific and bike-specific information. 
 The product also comes with a hardware component to alert cyclers when they need to return a bike. It was built using Arduino Uno and Active Buzzer.
 
-## Challenges we ran into
-None of us had ever used the Google Maps API before, especially not with React. We ran into a number of dependency conflicts and other issues which took a considerable amount of time to debug. We also had never worked with CockroachDB before.
-
-## Accomplishments that we're proud of
-We're proud of learning about new technologies from Hack the North's sponsors such as CockroachDB. We’re also proud of being able to integrate multiple components of a large project including the frontend, database, and hardware.
-
-## What's next for ReCycle
-We plan to expand our app to support mobile platforms as well. We hope to support our users further by giving information about bike trails and allowing in-app transactions.
-
 ![Hardware Setup](https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/226/362/datas/original.jpeg)
 ![Find a Bike](https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/226/390/datas/gallery.jpg)
 
