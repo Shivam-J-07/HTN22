@@ -1,6 +1,6 @@
 # HTN22
 ## Inspiration
-Biking everyday and reduce carbon emissions by **85%**. However, as students, we face many hurdles with using sustainable transportation. There are several roadblocks associated with biking, especially the cost of purchasing and maintaining a bike.  
+We were inspired by the following Independent [article](https://www.independent.co.uk/climate-change/news/carbon-emissions-dutch-cycling-b2147770.html) which described the environmental benefits of biking, particularly the reduction in carbon emissions by up to **85%**. However, as students, we face many hurdles with using sustainable transportation. There are several roadblocks associated with biking, especially the cost of purchasing and maintaining a bike.  
 
 There are cities, such as Toronto, which implement solutions to such a problem. They have a bicycle-sharing system with over 6850 government owned bicycles and 625 stations. However, implementing such a system in smaller cities such as Waterloo would require an immense amount of time, infrastructure and resources which would be unfeasible. 
 
