@@ -11,7 +11,6 @@ Our app is a win-win for both owners and riders, allowing owners to generate ove
 
 ## How we built it
 For the front-end component of the website, we created our web-app pages in React and used HTML5 with CSS3 to style the site. We used the Google Maps API to generate a map with markers, directions, and other functionality. 
-We built the backend using the Flask framework. 
 The backend was built using the Flask framework. We used a cockroachdb database to store and access user-specific and bike-specific information. 
 The product also comes with a hardware component to alert cyclers when they need to return a bike. It was built using Arduino Uno and Active Buzzer.
 
